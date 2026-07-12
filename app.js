@@ -293,6 +293,7 @@ const cards = [
 ];
 
 cards.push(...(window.documentCoverageCards || []));
+cards.push(...(window.courseOutlineCards || []));
 
 const deckSelect = document.getElementById("deckSelect");
 const searchInput = document.getElementById("searchInput");
@@ -354,7 +355,10 @@ function normalize(value) {
 }
 
 function getDecks() {
-  return ["All", ...Array.from(new Set(ids.map((card) => card.category))).sort()];
+  const categories = Array.from(new Set(ids.map((card) => card.category)));
+  const courseDecks = categories.filter((category) => /^(Week|Weeks) \d/.test(category));
+  const otherDecks = categories.filter((category) => !courseDecks.includes(category)).sort();
+  return ["All", ...courseDecks, ...otherDecks];
 }
 
 function activeCards() {

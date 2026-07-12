@@ -20,6 +20,7 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
   color: var(--ink);
   background:
     linear-gradient(90deg, rgba(36, 80, 90, 0.06) 1px, transparent 1px),
@@ -43,6 +44,7 @@ button {
 .app-shell {
   display: grid;
   grid-template-columns: 300px minmax(0, 1fr);
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -204,7 +206,10 @@ kbd {
 }
 
 .study-area {
-  width: min(980px, calc(100vw - 300px));
+  width: auto;
+  max-width: 980px;
+  min-width: 0;
+  justify-self: stretch;
   margin: 0 auto;
   padding: 34px 36px 44px;
 }
