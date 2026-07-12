@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A timed GERM1001 written final examination simulator aligned to the course outline and retained exam format." />
+    <title>GERM1001 Final Examination Portal</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23813231'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial' font-size='25' font-weight='700' fill='white'%3EEx%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="exam.css?v=20260712" />
+  </head>
+  <body>
+    <a class="skip-link" href="#examMain">Skip to examination</a>
+
+    <header class="portal-header">
+      <a class="portal-brand" href="index.html" aria-label="Return to GERM1001 flashcards">
+        <span class="portal-mark" aria-hidden="true">Ex</span>
+        <span><strong>GERM1001</strong><small>Final Examination Portal</small></span>
+      </a>
+      <nav aria-label="Portal navigation">
+        <a href="index.html">Flashcards</a>
+        <button id="printBtn" class="text-button" type="button" hidden>Print review</button>
+      </nav>
+    </header>
+
+    <main id="examMain">
+      <section id="setupView" class="setup-view">
+        <div class="setup-hero">
+          <p class="kicker">Written examination simulator</p>
+          <h1>Practise the complete final under exam conditions.</h1>
+          <p class="hero-copy">Two hours. Four questions. Forty-nine points. Your work is saved automatically on this device.</p>
+          <div class="exam-facts" aria-label="Exam format summary">
+            <div><strong>120</strong><span>minutes</span></div>
+            <div><strong>4</strong><span>questions</span></div>
+            <div><strong>49</strong><span>points</span></div>
+            <div><strong>45+</strong><span>German words</span></div>
+          </div>
+        </div>
+
+        <div class="setup-grid">
+          <section class="setup-card paper-picker">
+            <p class="section-label">Choose a paper</p>
+            <div id="paperChoices" class="paper-choices"></div>
+          </section>
+
+          <section class="setup-card">
+            <p class="section-label">The retained exam pattern</p>
+            <ol class="format-list">
+              <li><strong>Question 1 · 6 points</strong><span>Complete six personal-information fields.</span></li>
+              <li><strong>Question 2 · 20 points</strong><span>Choose one topic and write at least 45 relevant words.</span></li>
+              <li><strong>Question 3 · 12 points</strong><span>Choose one functional dialogue and complete 12 blanks.</span></li>
+              <li><strong>Question 4 · 11 points</strong><span>Complete one contextual paragraph cloze.</span></li>
+            </ol>
+          </section>
+
+          <section class="setup-card coverage-card">
+            <p class="section-label">Course-outline coverage</p>
+            <div class="coverage-tags" aria-label="Course topics">
+              <span>Erste Kontakte</span><span>Haus &amp; Haushalt</span><span>Essen &amp; Trinken</span>
+              <span>Freizeit</span><span>Wohnen</span><span>Krankheit</span><span>Alltag</span>
+              <span>Orientierung</span><span>Kaufen &amp; Schenken</span>
+            </div>
+            <p>Across both papers you will practise present tense, articles and cases, question forms, Perfekt with <em>haben</em>/<em>sein</em>, <em>Wo</em> + dative, and <em>Wohin</em> + accusative.</p>
+          </section>
+
+          <section class="setup-card rules-card">
+            <p class="section-label">Before you begin</p>
+            <ul>
+              <li>Use no notes, translations, flashcards, or answer keys.</li>
+              <li>Questions 1 and 4 are compulsory; choose one option in Questions 2 and 3.</li>
+              <li>The timer continues if you close or refresh this page.</li>
+              <li>Objective answers are graded automatically. You score the 20-point paragraph with a guided rubric.</li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="start-panel">
+          <label class="honour-check"><input id="honourCheck" type="checkbox" /> <span>I am ready to attempt this paper under examination conditions.</span></label>
+          <button id="startExamBtn" class="primary-button" type="button" disabled>Start 120-minute examination</button>
+          <button id="resumeExamBtn" class="secondary-button" type="button" hidden>Resume saved examination</button>
+        </div>
+      </section>
+
+      <section id="examView" class="exam-view" hidden>
+        <aside class="exam-sidebar" aria-label="Examination progress">
+          <div class="candidate-block">
+            <span class="status-dot" aria-hidden="true"></span>
+            <div><strong>Examination in progress</strong><small id="activePaperName"></small></div>
+          </div>
+          <div id="timer" class="timer" role="timer" aria-live="polite">
+            <span>Time remaining</span><strong id="timerValue">02:00:00</strong>
+          </div>
+          <div class="overall-progress"><span id="progressText">0 of 4 sections ready</span><div><i id="examProgressBar"></i></div></div>
+          <nav class="question-nav" aria-label="Questions">
+            <a href="#question1" data-question="q1"><span>1</span><div>Personal form<small>6 points</small></div><i></i></a>
+            <a href="#question2" data-question="q2"><span>2</span><div>Written paragraph<small>20 points</small></div><i></i></a>
+            <a href="#question3" data-question="q3"><span>3</span><div>Dialogue cloze<small>12 points</small></div><i></i></a>
+            <a href="#question4" data-question="q4"><span>4</span><div>Paragraph cloze<small>11 points</small></div><i></i></a>
+          </nav>
+          <div class="autosave-state"><span aria-hidden="true">✓</span><span id="autosaveText">Saved on this device</span></div>
+        </aside>
+
+        <div class="exam-paper">
+          <header class="paper-header">
+            <p>The University of the West Indies · Beginner's German</p>
+            <h1>GERM1001 Practice Final Examination</h1>
+            <div><span id="paperCode"></span><span>Duration: 2 hours</span><span>Total: 49 points</span></div>
+          </header>
+
+          <section class="instruction-box">
+            <strong>Instructions to candidates</strong>
+            <p>Answer all of Questions 1 and 4. For Questions 2 and 3, choose one option and complete it. Proper use of German will be considered in every response.</p>
+          </section>
+
+          <form id="examForm" novalidate></form>
+
+          <div class="finish-panel">
+            <div><strong>Ready to finish?</strong><p>Review unanswered sections before submitting. Submission cannot be undone.</p></div>
+            <button id="finishExamBtn" class="danger-button" type="button">Finish and submit examination</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviewView" class="review-view" hidden></section>
+    </main>
+
+    <div id="submitModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+      <div class="modal-card">
+        <p class="section-label">Submission check</p>
+        <h2 id="modalTitle">Submit your examination?</h2>
+        <div id="submissionWarnings"></div>
+        <div class="modal-actions">
+          <button id="returnToExamBtn" class="secondary-button" type="button">Return to exam</button>
+          <button id="confirmSubmitBtn" class="danger-button" type="button">Submit now</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="exam.js?v=20260712"></script>
+  </body>
+</html>
